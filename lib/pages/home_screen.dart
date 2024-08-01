@@ -43,18 +43,38 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Expanded(
-              child: Container(
-            width: double.infinity,
-            child: ListView.builder(
-                itemCount: _books.length,
-                itemBuilder: (context, index) {
-                  Book book = _books[index];
-                  return ListTile(
-                    title: Text(book.title),
-                    subtitle: Text(book.authors.join(', & ') ?? ''),
-                  );
-                }),
-          ))
+              child: GridView.builder(
+                  itemCount: _books.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2, childAspectRatio: 0.6),
+                  itemBuilder: (context, index) {
+                    Book book = _books[index];
+                    return Container(
+                      decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.surfaceVariant,
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                      child: Column(
+                        children: [
+                          Image.network(
+                              book.imageLinks['thumbnail'].toString() ?? "")
+                        ],
+                      ),
+                    );
+                  }))
+
+          // Expanded(
+          //     child: SizedBox(
+          //   width: double.infinity,
+          //   child: ListView.builder(
+          //       itemCount: _books.length,
+          //       itemBuilder: (context, index) {
+          //         Book book = _books[index];
+          //         return ListTile(
+          //           title: Text(book.title),
+          //           subtitle: Text(book.authors.join(', & ') ?? ''),
+          //         );
+          //       }),
+          // ))
         ],
       ),
     ));
