@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:reader_tracker/models/book.dart';
 import 'package:reader_tracker/network/network.dart';
 import 'package:reader_tracker/pages/books_details.dart';
+import 'package:reader_tracker/utils/book_details_arguments.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -58,10 +59,12 @@ class _HomeScreenState extends State<HomeScreen> {
                               const BorderRadius.all(Radius.circular(10))),
                       child: GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => BookDetailsScreen()));
+                          Navigator.pushNamed(context, '/details',
+                              arguments: BookDetailsArguments(itemBook: book));
+                          //   Navigator.push(
+                          //       context,
+                          //       MaterialPageRoute(
+                          //           builder: (context) => BookDetailsScreen()));
                         },
                         child: Column(
                           children: [
