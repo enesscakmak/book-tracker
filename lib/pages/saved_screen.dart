@@ -48,14 +48,24 @@ class _SavedScreenState extends State<SavedScreen> {
                                 Text(book.authors.join(", ")),
                                 ElevatedButton.icon(
                                     onPressed: () async {
+                                      book.isFavorite = !book.isFavorite;
                                       await DatabaseHelper.instance
                                           .toggleFavoriteStatus(
-                                              book.id, !book.isFavorite)
-                                          .then((value) =>
-                                              print("$value Item favored"));
+                                              book.id, book.isFavorite);
+
+                                      //refresh
+                                      setState(() {});
                                     },
-                                    icon: const Icon(Icons.favorite),
-                                    label: const Text("Add to Favorites"))
+                                    icon: Icon(
+                                      book.isFavorite
+                                          ? Icons.favorite
+                                          : Icons.favorite_outline,
+                                      color:
+                                          book.isFavorite ? Colors.red : null,
+                                    ),
+                                    label: Text(book.isFavorite
+                                        ? 'Favorite'
+                                        : 'Add to Favorites'))
                               ],
                             ),
                           ),

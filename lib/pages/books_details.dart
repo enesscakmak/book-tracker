@@ -60,37 +60,60 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                   const SizedBox(
                     height: 10,
                   ),
-                  Row(
-                    mainAxisAlignment: !isFromSavedScreen
-                        ? MainAxisAlignment.spaceEvenly
-                        : MainAxisAlignment.center,
-                    children: [
-                      !isFromSavedScreen
-                          ? ElevatedButton(
-                              onPressed: () async {
-                                try {
-                                  int savedInt = await DatabaseHelper.instance
-                                      .insert(book);
-                                  SnackBar snackBar = SnackBar(
-                                      content: Text("Book Saved $savedInt"));
-                                  ScaffoldMessenger.of(context)
-                                      .showSnackBar(snackBar);
-                                } catch (e) {
-                                  print("Error: $e");
-                                }
-                              },
-                              child: Text("Save"))
-                          : const SizedBox(),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      ElevatedButton.icon(
-                        onPressed: () async {},
-                        icon: Icon(Icons.favorite),
-                        label: Text("Favorite"),
-                      )
-                    ],
+                  SizedBox(
+                    child: !isFromSavedScreen
+                        ? ElevatedButton(
+                            onPressed: () async {
+                              try {
+                                int savedInt =
+                                    await DatabaseHelper.instance.insert(book);
+                                SnackBar snackBar = SnackBar(
+                                    content: Text("Book Saved $savedInt"));
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
+                              } catch (e) {
+                                print("Error: $e");
+                              }
+                            },
+                            child: Text("Save"))
+                        : ElevatedButton.icon(
+                            onPressed: () async {},
+                            icon: Icon(Icons.favorite),
+                            label: Text("Favorite"),
+                          ),
                   ),
+                  // Row(
+                  //   mainAxisAlignment: !isFromSavedScreen
+                  //       ? MainAxisAlignment.spaceEvenly
+                  //       : MainAxisAlignment.center,
+                  //   children: [
+                  //     !isFromSavedScreen
+                  //         ? ElevatedButton(
+                  //             onPressed: () async {
+                  //               try {
+                  //                 int savedInt = await DatabaseHelper.instance
+                  //                     .insert(book);
+                  //                 SnackBar snackBar = SnackBar(
+                  //                     content: Text("Book Saved $savedInt"));
+                  //                 ScaffoldMessenger.of(context)
+                  //                     .showSnackBar(snackBar);
+                  //               } catch (e) {
+                  //                 print("Error: $e");
+                  //               }
+                  //             },
+                  //             child: Text("Save"))
+                  //         : const SizedBox(),
+                  //     const SizedBox(
+                  //       height: 10,
+                  //     ),
+                  //     ElevatedButton.icon(
+                  //       onPressed: () async {},
+                  //       icon: Icon(Icons.favorite),
+                  //       label: Text("Favorite"),
+                  //     )
+                  //   ],
+                  // ),
+
                   const SizedBox(height: 10),
                   Text(
                     "Description",
