@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:reader_tracker/models/book.dart';
-import 'package:reader_tracker/network/network.dart';
 import 'package:reader_tracker/pages/books_details.dart';
 import 'package:reader_tracker/pages/favorites_screen.dart';
 import 'package:reader_tracker/pages/home_screen.dart';
@@ -43,8 +41,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
-
-  List<Book> _books = [];
 
   final List<Widget> _screens = [
     const HomeScreen(),

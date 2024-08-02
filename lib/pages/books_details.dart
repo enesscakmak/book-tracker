@@ -15,9 +15,82 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
     final args =
         ModalRoute.of(context)?.settings.arguments as BookDetailsArguments;
     final Book book = args.itemBook;
+    final theme = Theme.of(context).textTheme;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(book.title),
+      ),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              if (book.imageLinks.isNotEmpty)
+                Padding(
+                  padding: const EdgeInsets.all(18.0),
+                  child: Image.network(
+                    book.imageLinks['thumbnail'] ?? "",
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              Column(
+                children: [
+                  Text(
+                    book.title,
+                    style: theme.headlineSmall,
+                  ),
+                  Text(
+                    book.authors.join(', '),
+                    style: theme.labelLarge,
+                  ),
+                  Text(
+                    'Published: ${book.publishedDate}',
+                    style: theme.bodySmall,
+                  ),
+                  Text(
+                    'Page count: ${book.pageCount}',
+                    style: theme.bodySmall,
+                  ),
+                  Text(
+                    'Langauge: ${book.language}',
+                    style: theme.bodySmall,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ElevatedButton(onPressed: () {}, child: Text("Save")),
+                      ElevatedButton.icon(
+                          onPressed: () {},
+                          icon: Icon(Icons.favorite),
+                          label: Text("Favorite"))
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    "Description",
+                    style: theme.titleMedium,
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  Container(
+                    margin: EdgeInsets.all(10),
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                        color:
+                            Theme.of(context).colorScheme.secondary.withOpacity(
+                                  0.1,
+                                ),
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                            color: Theme.of(context).colorScheme.secondary)),
+                    child: Text(book.description),
+                  )
+                ],
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
