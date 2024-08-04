@@ -39,23 +39,23 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                 children: [
                   Text(
                     book.title,
-                    style: theme.headlineSmall,
+                    style: theme.titleLarge,
                   ),
                   Text(
                     book.authors.join(', '),
-                    style: theme.labelLarge,
+                    style: theme.titleMedium,
                   ),
                   Text(
                     'Published: ${book.publishedDate}',
-                    style: theme.bodySmall,
+                    style: theme.bodyMedium,
                   ),
                   Text(
                     'Page count: ${book.pageCount}',
-                    style: theme.bodySmall,
+                    style: theme.bodyMedium,
                   ),
                   Text(
                     'Langauge: ${book.language}',
-                    style: theme.bodySmall,
+                    style: theme.bodyMedium,
                   ),
                   const SizedBox(
                     height: 10,
@@ -75,11 +75,14 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                                 print("Error: $e");
                               }
                             },
-                            child: Text("Save"))
+                            child: Text(
+                              "Save",
+                              style: theme.titleMedium,
+                            ))
                         : ElevatedButton.icon(
                             onPressed: () async {},
-                            icon: Icon(Icons.favorite),
-                            label: Text("Favorite"),
+                            icon: const Icon(Icons.favorite),
+                            label: const Text("Favorite"),
                           ),
                   ),
                   // Row(
@@ -123,17 +126,17 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
                     height: 5,
                   ),
                   Container(
-                    margin: EdgeInsets.all(10),
-                    padding: EdgeInsets.all(10),
+                    margin: const EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                        color:
-                            Theme.of(context).colorScheme.secondary.withOpacity(
-                                  0.1,
-                                ),
+                        color: Color.fromARGB(80, 218, 205, 255),
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
                             color: Theme.of(context).colorScheme.secondary)),
-                    child: Text(book.description),
+                    child: Text(
+                      book.description,
+                      style: theme.titleSmall,
+                    ),
                   )
                 ],
               )

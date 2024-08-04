@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:reader_tracker/pages/books_details.dart';
 import 'package:reader_tracker/pages/favorites_screen.dart';
@@ -17,7 +19,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.orangeAccent),
+        colorScheme:
+            ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 45, 181, 158)),
         useMaterial3: true,
       ),
       initialRoute: '/',
@@ -52,21 +55,26 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('A. Reader'),
+        backgroundColor: Color.fromARGB(255, 16, 60, 93),
+        title: Text(''),
       ),
       body: _screens[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Color.fromARGB(255, 16, 60, 93),
         items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home,
+            ),
+            label: 'Home',
+          ),
           BottomNavigationBarItem(icon: Icon(Icons.save), label: "Saved"),
           BottomNavigationBarItem(
               icon: Icon(Icons.favorite), label: "Favorites")
         ],
-        selectedItemColor: Theme.of(context).colorScheme.onPrimary,
-        unselectedItemColor: Theme.of(context).colorScheme.onSurfaceVariant,
+        selectedItemColor: Color.fromARGB(255, 222, 222, 33),
+        unselectedItemColor: Colors.white,
         onTap: (value) {
           print("Tapped $value");
           setState(() {
