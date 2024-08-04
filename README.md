@@ -1,16 +1,19 @@
-# reader_tracker
+# Book Tracker
 
-A new Flutter project.
+A Book Tracker project using SQLite and Google Books API for learning Flutter that let's you ⤵  
 
-## Getting Started
+  - Search a book with keywords
+  - See detailed information about books
+  - Save books you want to take a look later
+  - Make a list out of your favorites
+    
 
-This project is a starting point for a Flutter application.
+<p align="center">
+<img width="30%" height="40%" src="https://github.com/user-attachments/assets/be88ced3-ede4-4bb2-9e22-276ea67f1d03">
+             
 
-A few resources to get you started if this is your first Flutter project:
+</p>
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+    Made with the help of "Flutter & Dart: Complete App Development Course" by Paulo Dichone
